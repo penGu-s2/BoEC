@@ -3,7 +3,7 @@ $("#login").click(function () {
     let pass = $("[name=account]").eq(1).val();
 
     $.ajax({
-        url: "https://eprojectbytranxuantung.herokuapp.com/api/users/checkLoginByUsernamePassword?username=" + name + "&password=" + pass,
+        url: "https://http://localhost:8080/api/login?username=" + name + "&password=" + pass,
         method: "GET",
         headers: { "Accept": "application/json; odata=verbose" },
         success: function (data) {

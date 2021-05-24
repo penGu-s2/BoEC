@@ -20,16 +20,22 @@ public class User implements Serializable{
 	@NotNull
 	@Column(name="id")
 	private int id;
+	
 	@Column(name="username")
 	private String username;
+	
 	@Column(name="password")
 	private String password;
+	
 	@Column(name="phoneNumber")
 	private String phoneNumber;
+	
 	@Column(name="email")
 	private String email;
+	
 	@Column(name="dob")
 	private Date dob;
+	
 	@Column(name="fullName")
 	private String fullName;
 
