@@ -1,20 +1,17 @@
 $("#register").click(function () {
     let status = true;
     let acc1 = $("[name=fName]").eq(0).val();
-    let acc2 = $("[name=mName]").eq(0).val();
-    let acc3 = $("[name=lName]").eq(0).val();
-    let acc4 = $("[name=user]").eq(0).val();
+    let acc4 = $("[name=account]").eq(0).val();
     let acc5 = $("[name=pwd]").eq(0).val();
     let acc6 = $("[name=pwdr]").eq(0).val();
     let acc7 = $("[name=email]").eq(0).val();
     let acc8 = $("[name=dob]").eq(0).val();
     let acc9 = $("[name=phone]").eq(0).val();
-    let gt = $("#gender");
-
+   
     console.log(status);
     let status2 = true;
     $.ajax({
-        url: "https://eprojectbytranxuantung.herokuapp.com/api/users/checkLoginByUsernamePassword?username=" + acc4,
+        url: "http://localhost:8080/api/checkusername?username=" + acc4,
         method: "GET",
         async: false,
         headers: { "Accept": "application/json; odata=verbose" },
@@ -33,17 +30,14 @@ $("#register").click(function () {
     let formData1 = {
         username: acc4,
         password: acc5,
-        firstName: acc1,
-        middleName: acc2,
-        lastName: acc3,
-        gender: parseInt(gt.val()),
+        fullName: acc1,
         email: acc7,
         dob: acc8,
         phoneNumber: acc9,
     }
     if (status == true && status2 == true) {
         $.ajax({
-            url: "https://eprojectbytranxuantung.herokuapp.com/api/users/addCustomer?username="+acc4+"&password="+acc5+"&firstName"+acc1+"&middleName="+acc2+"&lastName="+acc3,
+            url: "http://localhost:8080/api/register",
             method: "POST",
            
             dataType: "json",
@@ -52,7 +46,7 @@ $("#register").click(function () {
             contentType: 'application/json'
         });
         alert("Thêm thành công!");
-          window.location.href = 'login.html';
+          window.location.href = '/';
     } else if (status == false) {
         alert("Không được bỏ trống");
     } else if (status3 == false) {
